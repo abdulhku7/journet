@@ -1,0 +1,380 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+    --base-color: #F1EFE7;
+    --black: #000000;
+    --dark-gray: #222222;
+    --white: #ffffff;
+}
+
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'League Spartan', sans-serif;
+    line-height: 1.6;
+    background-color: var(--base-color);
+}
+
+/* Hero section */
+.hero {
+    height: 100vh;
+    width: 100%;
+    background-color: var(--base-color);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content {
+    padding: 2rem;
+    max-width: 800px;
+}
+
+/* Logo styles */
+.fixed-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.5s ease;
+}
+
+.fixed-logo img {
+    width: 100px;
+    height: auto;
+}
+
+.fixed-logo.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.main-logo {
+    transition: all 0.5s ease;
+}
+
+.main-logo.hide {
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+.logo img {
+    max-width: 170px;
+    height: auto;
+    display: block;
+    margin: 0 auto;  /* Centers the logo horizontally */
+    transition: transform 0.3s ease;
+
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Hero text styles */
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+}
+
+.hero-text p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    color: var(--dark-gray);
+    font-weight: 500;
+}
+
+/* Call-to-action button with glow effect */
+.cta-button {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    font-family: 'League Spartan', sans-serif;
+}
+
+/* Glow effect */
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    background: var(--black);
+    filter: blur(15px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+/* Hover effects */
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover::before {
+    opacity: 0.5;
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+/* Goals Section */
+.goals {
+    padding: 1rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.goals-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.goals h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+/* Carousel Styles */
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.carousel {
+    display: flex;
+    gap: 1.5rem;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel-item {
+    flex: 0 0 200px;
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+    transform: translateY(-10px);
+}
+
+.carousel-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.8rem;
+}
+
+.carousel-item h3 {
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.carousel-item p {
+    color: var(--dark-gray);
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Carousel Animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-200px * 4 - 1.5rem * 4));
+    }
+}
+
+/* Add this to your existing animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--base-color);
+    padding: 2.5rem;
+    border-radius: 20px;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark-gray);
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--black);
+    transform: rotate(90deg);
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--black);
+    font-family: 'League Spartan', sans-serif;
+    font-size: 2rem;
+}
+
+/* Form Styles */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--dark-gray);
+    border-radius: 10px;
+    background: transparent;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Quicksand', sans-serif;
+    color: var(--dark-gray);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    background-color: var(--base-color);
+    padding: 0 0.5rem;
+}
+
+.form-group input:focus,
+.form-group input:not(:placeholder-shown) {
+    border-color: var(--black);
+    outline: none;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: 0;
+    font-size: 0.8rem;
+    color: var(--black);
+}
+
+.submit-btn {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+/* Footer Styles */
+.footer {
+    padding: 4rem 0 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-cta {
+    /* Smaller version of the CTA button */
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+}
+
+.copyright {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.8rem;
+    color: var(--dark-gray);
+    opacity: 0.8;
+}

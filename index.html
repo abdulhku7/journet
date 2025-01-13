@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journet</title>
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js';
+        window.initFirebase = function() {
+            return { 
+                initializeApp, 
+                getFirestore, 
+                getAnalytics,
+                firestoreAPI: { collection, addDoc }
+            };
+        }
+    </script>
+</head>
+<body>
+    <!-- Fixed Logo Container -->
+    <div class="fixed-logo">
+        <img src="images/logo2.png" alt="Journet Logo">
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo main-logo">
+                <img src="images/logo2.png" alt="Journet Logo">
+            </div>
+            <div class="hero-text">
+                <h2>Let me take through my Journet</h2>
+                <p>Sign up to be part of the journey</p>
+                <button class="cta-button">Sign up</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="goals">
+        <div class="goals-content">
+            <h2>My Goals</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="images/video-camera-alt.png" alt="Content Creation">
+                        <h3>Content Creation</h3>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/dev.png" alt="Development">
+                        <h3>Development</h3>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/dumbbell-weightlifting.png" alt="Fitness">
+                        <h3>Fitness</h3>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/chart-line-up.png" alt="Growth">
+                        <h3>Growth</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <button class="cta-button footer-cta">Sign up</button>
+            <p class="copyright">all rights reserved to &copy;journet</p>
+        </div>
+    </footer>
+
+    <!-- Sign Up Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <button type="button" class="close-modal">&times;</button>
+            <h2>Join the Journey</h2>
+            <form id="signupForm" class="signup-form" onsubmit="return false;">
+                <div class="form-group">
+                    <input type="text" id="firstName" name="firstName" placeholder=" " required>
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lastName" name="lastName" placeholder=" " required>
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder=" " required>
+                    <label for="email">Email</label>
+                </div>
+                <button type="submit" class="cta-button submit-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
